@@ -1,0 +1,69 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+struct Student {
+    string name;
+    int c;    // Data Structures marks
+    int java;  // DBMS marks
+    int cpp;   // C++ marks
+};
+
+int main() {
+    // Define three students
+    Student students[3];
+
+    
+    for (int i = 0; i < 3; i++) {
+        cout << "Enter details for student " << i + 1 << ":\n";
+        cout << "Name: ";
+        cin >> students[i].name;
+        cout << " c program marks: ";
+        cin >> students[i].c;
+        cout << "java marks: ";
+        cin >> students[i].java;
+        cout << "C++ marks: ";
+        cin >> students[i].cpp;
+    }
+    
+    int fast_c = 0, slow_c= 0;
+    int fast_java = 0, slow_java = 0;
+    int fast_cpp = 0, slow_cpp = 0;
+    
+       for (int i = 1; i < 3; i++) {
+        // Data Structures
+        if (students[i].c > students[fast_c].c) fast_c = i;
+        if (students[i].c < students[slow_c].c) slow_c= i;
+        
+        // DBMS
+        if (students[i].java > students[fast_java].java) fast_java = i;
+        if (students[i].java < students[slow_java].java) slow_java = i;
+        
+        // C++
+        if (students[i].cpp > students[fast_java].cpp) fast_java = i;
+        if (students[i].cpp < students[slow_java].cpp) slow_java = i;
+    }
+    
+     cout << "\nFast and Slow Learners in Each Subject:\n";
+
+    cout << "\n c :\n";
+    cout << "Fast Learner: " << students[fast_c].name << " with marks " << students[fast_c].c << endl;
+    cout << "Slow Learner: " << students[slow_c].name << " with marks " << students[slow_c].c << endl;
+
+ 
+    cout << "\nJAVA:\n";
+    cout << "Fast Learner: " << students[fast_java].name << " with marks " << students[fast_java].java << endl;
+    cout << "Slow Learner: " << students[slow_java].name << " with marks " << students[slow_java].java << endl;
+
+  
+    cout << "\nC++:\n";
+    cout << "Fast Learner: " << students[fast_java].name << " with marks " << students[fast_java].cpp << endl;
+    cout << "Slow Learner: " << students[slow_java].name << " with marks " << students[slow_java].cpp << endl;
+
+    return 0;
+}
+    
+    
+    
